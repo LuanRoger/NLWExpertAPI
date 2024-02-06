@@ -7,9 +7,11 @@ namespace NLWExpertAPI.Context;
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
     public DbSet<Auction> auctions { get; set; } = null!;
+    public DbSet<Item> items { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         new AuctionModelTypeConfiguration().Configure(modelBuilder.Entity<Auction>());
+        new ItemModelTypeConfiguration().Configure(modelBuilder.Entity<Item>());
     }
 }

@@ -4,5 +4,7 @@ namespace NLWExpertAPI.Controllers;
 
 public interface IAuctionController
 {
-    public AuctionDto GetAuction();
+    public Task<AuctionDto> GetAuctionById(int id);
+    public Task<List<AuctionDto>> GetAllAuction();
+    public Task<AuctionDto> GetActiveAuctionByTime();
 }

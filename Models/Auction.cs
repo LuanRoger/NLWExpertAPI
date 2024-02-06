@@ -6,4 +6,5 @@ public class Auction
     public string nome { get; set; }
     public DateTime starts { get; set; }
     public DateTime ends { get; set; }
+    public ICollection<Item> items { get; set; }
 }
