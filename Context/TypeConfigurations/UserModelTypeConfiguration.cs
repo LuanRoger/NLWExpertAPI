@@ -9,6 +9,8 @@ public class UserModelTypeConfiguration : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder
+            .ToTable("Users");
+        builder
             .HasKey(f => f.id);
         builder
             .Property(f => f.id)

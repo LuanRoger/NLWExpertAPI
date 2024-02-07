@@ -97,7 +97,7 @@ namespace NLWExpertAPI.Migrations
                     b.HasIndex("userId")
                         .IsUnique();
 
-                    b.ToTable("offers");
+                    b.ToTable("Offers", (string)null);
                 });
 
             modelBuilder.Entity("NLWExpertAPI.Models.User", b =>
@@ -122,7 +122,10 @@ namespace NLWExpertAPI.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("users");
+                    b.HasIndex("email")
+                        .IsUnique();
+
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("NLWExpertAPI.Models.Item", b =>

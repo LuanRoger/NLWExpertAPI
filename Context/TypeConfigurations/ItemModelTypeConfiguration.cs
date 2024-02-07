@@ -13,6 +13,9 @@ public class ItemModelTypeConfiguration : IEntityTypeConfiguration<Item>
         builder
             .HasKey(f => f.id);
         builder
+            .Property(f => f.id)
+            .ValueGeneratedOnAdd();
+        builder
             .Property(f => f.nome)
             .HasMaxLength(100)
             .IsRequired();

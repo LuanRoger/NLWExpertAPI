@@ -11,8 +11,8 @@ using NLWExpertAPI.Context;
 namespace NLWExpertAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240207133237_OfferUserTable")]
-    partial class OfferUserTable
+    [Migration("20240207173859_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,7 +100,7 @@ namespace NLWExpertAPI.Migrations
                     b.HasIndex("userId")
                         .IsUnique();
 
-                    b.ToTable("offers");
+                    b.ToTable("Offers", (string)null);
                 });
 
             modelBuilder.Entity("NLWExpertAPI.Models.User", b =>
@@ -125,7 +125,10 @@ namespace NLWExpertAPI.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("users");
+                    b.HasIndex("email")
+                        .IsUnique();
+
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("NLWExpertAPI.Models.Item", b =>

@@ -12,6 +12,9 @@ public class AuctionModelTypeConfiguration : IEntityTypeConfiguration<Auction>
             .ToTable("Auctions");
         builder
             .HasKey(f => f.id);
+        builder
+            .Property(f => f.id)
+            .ValueGeneratedOnAdd();
         builder.Property(f => f.nome)
             .HasMaxLength(100)
             .IsRequired();
