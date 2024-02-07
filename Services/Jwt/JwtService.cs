@@ -27,7 +27,7 @@ public class JwtService : IJwtService
     public JwtService(IOptions<JwtParametersOption> options)
     {
         _options = options.Value;
-        _privateKey = EnvVars.GetJwtKey() ?? 
+        _privateKey = EnvVars.GetJwtSecret() ?? 
                       throw new EnvironmentVariableIsNullOrEmptyException(nameof(EnvVars.JWT_KEY));
     }
     

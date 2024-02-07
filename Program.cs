@@ -7,6 +7,7 @@ using NLWExpertAPI.Endpoints;
 using NLWExpertAPI.Exceptions;
 using NLWExpertAPI.Mappers;
 using NLWExpertAPI.Mappers.Interfaces;
+using NLWExpertAPI.Mappers.RequestModelsMappers;
 using NLWExpertAPI.Models;
 using NLWExpertAPI.Repositories;
 using NLWExpertAPI.Services.Auth;
@@ -36,6 +37,8 @@ builder.Services.AddSingleton<IJwtService, JwtService>();
 builder.Services.AddScoped<IItemMapper, ItemMapper>();
 builder.Services.AddScoped<IAuctionMapper, AuctionMapper>();
 builder.Services.AddScoped<IOfferMapper, OfferMapper>();
+builder.Services.AddScoped<IUserMapper, UserMapper>();
+builder.Services.AddScoped<IRegisterNewUserMapper, RegisterNewUserMapper>();
 
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
 builder.Services.AddScoped<IOfferRepository, OfferRepository>();
@@ -43,6 +46,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddScoped<IAuctionController, AuctionController>();
 builder.Services.AddScoped<IOfferController, OfferController>();
+builder.Services.AddScoped<IUserController, UserController>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer();
@@ -63,6 +67,11 @@ if(app.Environment.IsDevelopment())
     context.Database.EnsureCreated();
     context.Database.Migrate();
 }
+
+RouteGroupBuilder authGroup = app.MapGroup("auth")
+    .WithTags("Auth")
+    .AllowAnonymous();
+authGroup.MapUserEndpoints();
 
 RouteGroupBuilder auctionGroup = app.MapGroup("auction")
     .WithTags("Auction")

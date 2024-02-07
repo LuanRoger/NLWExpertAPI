@@ -16,7 +16,7 @@ public class AuthenticationJwtBearerConfiguration : IConfigureNamedOptions<JwtBe
     public AuthenticationJwtBearerConfiguration(IOptions<JwtParametersOption> jwtOptions)
     {
         _jwtOptions = jwtOptions.Value;
-        _privateKey = EnvVars.GetJwtKey() ?? 
+        _privateKey = EnvVars.GetJwtSecret() ?? 
                       throw new EnvironmentVariableIsNullOrEmptyException(nameof(EnvVars.JWT_KEY));
     }
     
