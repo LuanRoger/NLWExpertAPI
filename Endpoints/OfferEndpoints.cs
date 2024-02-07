@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NLWExpertAPI.Controllers;
+using NLWExpertAPI.Endpoints.RequestResponseModels;
 using NLWExpertAPI.Exceptions;
 using NLWExpertAPI.Models;
 using NLWExpertAPI.Models.Dto;

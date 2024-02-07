@@ -1,4 +1,4 @@
-﻿namespace NLWExpertAPI.Models;
+﻿namespace NLWExpertAPI.Endpoints.RequestResponseModels;
 
 public class CreateNewOfferRequest
 {

@@ -1,4 +1,5 @@
-﻿using NLWExpertAPI.Exceptions;
+﻿using NLWExpertAPI.Endpoints.RequestResponseModels;
+using NLWExpertAPI.Exceptions;
 using NLWExpertAPI.Mappers.Interfaces;
 using NLWExpertAPI.Models;
 using NLWExpertAPI.Models.Dto;

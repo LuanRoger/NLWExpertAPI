@@ -1,4 +1,5 @@
-﻿using NLWExpertAPI.Models;
+﻿using NLWExpertAPI.Endpoints.RequestResponseModels;
+using NLWExpertAPI.Models;
 using NLWExpertAPI.Models.Dto;
 
 namespace NLWExpertAPI.Controllers;
