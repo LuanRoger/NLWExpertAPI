@@ -17,8 +17,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IItemMapper, ItemMapper>();
 builder.Services.AddScoped<IAuctionMapper, AuctionMapper>();
+builder.Services.AddScoped<IOfferMapper, OfferMapper>();
+
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
+builder.Services.AddScoped<IOfferRepository, OfferRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddScoped<IAuctionController, AuctionController>();
+builder.Services.AddScoped<IOfferController, OfferController>();
 
 WebApplication app = builder.Build();
 
@@ -34,5 +40,8 @@ if(app.Environment.IsDevelopment())
 
 RouteGroupBuilder auctionGroup = app.MapGroup("auction");
 auctionGroup.MapAuctionEndpoints();
+
+RouteGroupBuilder offerGroup = app.MapGroup("offer");
+offerGroup.MapOfferEndpoints();
 
 app.Run();
