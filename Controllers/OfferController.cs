@@ -13,7 +13,7 @@ public class OfferController(
     IOfferMapper offerMapper
     ) : IOfferController
 {
-    public async Task<OfferDto> CreateNewOffer(CreateNewOfferRequest request, int userId)
+    public async Task<OfferDto> CreateNewOffer(CreateNewOfferRequest request, int itemId, int userId)
     {
         User? user = await userRepository.GetUserById(userId);
         if(user is null)
@@ -24,7 +24,7 @@ public class OfferController(
         {
             createdAt = now,
             price = request.price,
-            itemId = request.itemId,
+            itemId = itemId,
             userId = userId
         };
         newOffer = await offerRepository.CreateNewOffer(newOffer);

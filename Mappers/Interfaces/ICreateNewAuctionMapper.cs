@@ -3,7 +3,7 @@ using NLWExpertAPI.Models;
 
 namespace NLWExpertAPI.Mappers.Interfaces;
 
-public interface IRegisterNewUserMapper
+public interface ICreateNewAuctionMapper
 {
-    public abstract User ToConcreteUser(RegisterNewUserRequest request);
+    public abstract Auction ToConcreteAuction(CreateNewAuctionRequest request);
 }

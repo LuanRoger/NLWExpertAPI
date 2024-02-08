@@ -6,7 +6,7 @@ using Riok.Mapperly.Abstractions;
 namespace NLWExpertAPI.Mappers.RequestModelsMappers;
 
 [Mapper]
-public partial class RegisterNewUserMapper : IRegisterNewUserMapper
+public partial class NewItemForAuctionMapper : INewItemForAuctionMapper
 {
-    public partial User ToConcreteUser(RegisterNewUserRequest request);
+    public partial Item ToConcreteItem(NewItemForAuctionRequest request);
 }

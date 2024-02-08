@@ -39,6 +39,8 @@ builder.Services.AddScoped<IAuctionMapper, AuctionMapper>();
 builder.Services.AddScoped<IOfferMapper, OfferMapper>();
 builder.Services.AddScoped<IUserMapper, UserMapper>();
 builder.Services.AddScoped<IRegisterNewUserMapper, RegisterNewUserMapper>();
+builder.Services.AddScoped<INewItemForAuctionMapper, NewItemForAuctionMapper>();
+builder.Services.AddScoped<ICreateNewAuctionMapper, CreateNewAuctionMapper>();
 
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
 builder.Services.AddScoped<IOfferRepository, OfferRepository>();

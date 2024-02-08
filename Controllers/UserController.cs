@@ -18,7 +18,7 @@ public class UserController(
 {
     public async Task<UserDto> RegisterNewUser(RegisterNewUserRequest request)
     {
-        User newUser = registerNewUserMapper.MapToConcreteUser(request);
+        User newUser = registerNewUserMapper.ToConcreteUser(request);
         
         newUser = await userRepository.CreateNewUser(newUser);
         await userRepository.FlushChanges();
