@@ -19,8 +19,12 @@ public static class UserEndpoints
         [FromBody] RegisterNewUserRequest request,
         [FromServices] IUserController controller)
     {
-        //TODO: It will thrown if the email is already in use, catch it later
-        UserDto newUser = await controller.RegisterNewUser(request);
+        UserDto newUser;
+        try
+        {
+            newUser = await controller.RegisterNewUser(request);
+        }
+        catch(Exception) { return Results.Conflict(); }
         
         return Results.Created($"/user/{newUser.id}", newUser);
     }
