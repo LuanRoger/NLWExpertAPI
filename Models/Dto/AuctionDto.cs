@@ -2,6 +2,7 @@
 
 public class AuctionDto
 {
+    public required int id { get; init; }
     public required string nome { get; init; }
     public required DateTime starts { get; init; }
     public required DateTime ends { get; init; }

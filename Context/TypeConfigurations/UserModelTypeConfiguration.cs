@@ -4,28 +4,31 @@ using NLWExpertAPI.Models;
 
 namespace NLWExpertAPI.Context.TypeConfigurations;
 
-public class AuctionModelTypeConfiguration : IEntityTypeConfiguration<Auction>
+public class UserModelTypeConfiguration : IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<Auction> builder)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
         builder
-            .ToTable("Auctions");
+            .ToTable("Users");
         builder
             .HasKey(f => f.id);
         builder
             .Property(f => f.id)
             .ValueGeneratedOnAdd();
-        builder.Property(f => f.nome)
+        builder
+            .Property(f => f.nome)
             .HasMaxLength(100)
             .IsRequired();
-        builder.Property(f => f.starts)
-            .IsRequired();
-        builder.Property(f => f.ends)
+        builder
+            .HasIndex(f => f.email)
+            .IsUnique();
+        builder
+            .Property(f => f.email)
             .IsRequired();
         builder
-            .HasMany(f => f.items)
-            .WithOne()
-            .HasForeignKey(f => f.auctionId)
+            .Property(f => f.senha)
+            .HasMaxLength(50)
             .IsRequired();
+
     }
 }

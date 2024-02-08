@@ -6,7 +6,7 @@ using Riok.Mapperly.Abstractions;
 namespace NLWExpertAPI.Mappers;
 
 [Mapper]
-public partial class AuctionMapper : IAuctionMapper
+public partial class OfferMapper : IOfferMapper
 {
-    public partial AuctionDto ToDto(Auction auction);
+    public partial OfferDto ToDto(Offer offer);
 }

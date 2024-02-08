@@ -15,7 +15,9 @@
       "launchBrowser": false,
       "applicationUrl": "https://localhost:7285;http://localhost:5278",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "SQLITE_CONNECTION_STRING": "Data Source=nlwexpert.db",
+        "JWT_SECRET": "15f4fdab5fdcc5f2c8e74263408911cec578d49d349120fe99fbe20efc96cd8d"
       }
     }
   }

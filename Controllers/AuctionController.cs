@@ -1,4 +1,5 @@
-﻿using NLWExpertAPI.Exceptions;
+﻿using NLWExpertAPI.Endpoints.RequestResponseModels;
+using NLWExpertAPI.Exceptions;
 using NLWExpertAPI.Mappers.Interfaces;
 using NLWExpertAPI.Models;
 using NLWExpertAPI.Models.Dto;
@@ -8,7 +9,8 @@ namespace NLWExpertAPI.Controllers;
 
 public class AuctionController(
     IAuctionRepository auctionRepository,
-    IAuctionMapper auctionMapper
+    IAuctionMapper auctionMapper,
+    ICreateNewAuctionMapper createNewAuctionMapper
     ) : IAuctionController
 {
     public async Task<AuctionDto> GetAuctionById(int id)
@@ -38,6 +40,18 @@ public class AuctionController(
 
         AuctionDto dtoAuction = auctionMapper.ToDto(auction);
 
+        return dtoAuction;
+    }
+
+    public async Task<AuctionDto> CreateNewAuction(CreateNewAuctionRequest request)
+    {
+        Auction newAuction = createNewAuctionMapper.ToConcreteAuction(request);
+        newAuction.starts = DateTime.Now;
+        
+        newAuction = await auctionRepository.AddNewAction(newAuction);
+        await auctionRepository.FlushChanges();
+        
+        AuctionDto dtoAuction = auctionMapper.ToDto(newAuction);
         return dtoAuction;
     }
 }

@@ -71,6 +71,63 @@ namespace NLWExpertAPI.Migrations
                     b.ToTable("Items", (string)null);
                 });
 
+            modelBuilder.Entity("NLWExpertAPI.Models.Offer", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("itemId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("itemId")
+                        .IsUnique();
+
+                    b.HasIndex("userId")
+                        .IsUnique();
+
+                    b.ToTable("Offers", (string)null);
+                });
+
+            modelBuilder.Entity("NLWExpertAPI.Models.User", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("senha")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("email")
+                        .IsUnique();
+
+                    b.ToTable("Users", (string)null);
+                });
+
             modelBuilder.Entity("NLWExpertAPI.Models.Item", b =>
                 {
                     b.HasOne("NLWExpertAPI.Models.Auction", null)
@@ -78,6 +135,23 @@ namespace NLWExpertAPI.Migrations
                         .HasForeignKey("auctionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NLWExpertAPI.Models.Offer", b =>
+                {
+                    b.HasOne("NLWExpertAPI.Models.Item", null)
+                        .WithOne()
+                        .HasForeignKey("NLWExpertAPI.Models.Offer", "itemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NLWExpertAPI.Models.User", "user")
+                        .WithOne()
+                        .HasForeignKey("NLWExpertAPI.Models.Offer", "userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("NLWExpertAPI.Models.Auction", b =>
